@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bonjour, ma Princesse ❤️</title>
+<style>
+/* ===== Palette : rose poudré, crème, rouges doux, or léger ===== */
+:root{--rose:#f6d3d8;--creme:#fff8f0;--cerise:#c2334d;--rouge:#9e1f3a;--or:#e3b04b;--encre:#4a2230}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;overflow-x:hidden}
+body{font-family:Georgia,"Palatino Linotype",Palatino,serif;color:var(--encre);
+  background:linear-gradient(180deg,#f9dfe3 0%,var(--creme) 55%,#fbe7e1 100%);min-height:100vh}
+
+/* ===== Décor ===== */
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--or);box-shadow:0 0 8px 2px rgba(227,176,75,.6);animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.1;transform:scale(.6)}50%{opacity:.9;transform:scale(1.3)}}
+.fh{position:absolute;bottom:-30px;opacity:.55;animation:rise linear forwards}
+@keyframes rise{to{transform:translate3d(var(--dx),-115vh,0) rotate(var(--r));opacity:0}}
+.rain{position:fixed;top:-30px;pointer-events:none;z-index:20;animation:drop linear forwards}
+@keyframes drop{to{transform:translate3d(var(--dx),110vh,0) rotate(var(--r))}}
+
+/* ===== Écrans ===== */
+.screen{position:relative;z-index:2;min-height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:calc(30px + env(safe-area-inset-top,0px)) 24px calc(40px + env(safe-area-inset-bottom,0px))}
+.screen.on{display:flex;animation:in 1.4s ease both}
+.screen.out{display:flex;animation:out .9s ease both}
+@keyframes in{from{opacity:0}to{opacity:1}}
+@keyframes out{to{opacity:0}}
+.box{width:100%;max-width:440px}
+
+/* Lever de soleil */
+.sky{position:relative;width:240px;height:150px;margin:0 auto 18px;overflow:hidden;border-radius:120px 120px 0 0;
+  background:linear-gradient(#f4b6bf,#f9d9c8 70%,#fde9c8);box-shadow:0 8px 30px rgba(194,51,77,.2)}
+.sun{position:absolute;left:50%;bottom:-70px;width:90px;height:90px;margin-left:-45px;border-radius:50%;
+  background:radial-gradient(circle,#fff3c4,#f6c35b 70%);box-shadow:0 0 40px 16px rgba(246,195,91,.55);animation:sunrise 4.5s ease-out forwards}
+@keyframes sunrise{to{transform:translateY(-95px)}}
+.sky .heart{position:absolute;left:0;right:0;bottom:6px;font-size:3.2rem;line-height:1;z-index:2}
+.heart{display:inline-block;animation:beat 2.2s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.18)}28%{transform:scale(1)}42%{transform:scale(1.1)}}
+
+h1{font-weight:normal;font-style:italic;font-size:1.9rem;color:var(--rouge);margin:.3em 0 .6em;line-height:1.3}
+p{font-size:1.12rem;line-height:1.75;margin:.8em 0}
+.r{opacity:0;transform:translateY(8px);transition:opacity 1.6s ease,transform 1.6s ease}
+.r.show{opacity:1;transform:none}
+
+.btn{min-height:54px;padding:14px 28px;margin-top:14px;border:0;border-radius:32px;font:inherit;font-size:1.08rem;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#d6455f,var(--rouge));box-shadow:0 8px 22px rgba(158,31,58,.35);transition:transform .2s}
+.btn:active{transform:scale(.96)}
+.btn[disabled]{opacity:.6;pointer-events:none}
+.btn.soft{background:transparent;color:var(--rouge);border:1.5px solid var(--cerise);box-shadow:none}
+.hidden{display:none!important}
+
+/* Lettre */
+.letter{align-items:flex-start;justify-content:flex-start;text-align:left}
+.paper{background:rgba(255,252,247,.82);border:1px solid rgba(194,51,77,.18);border-radius:18px;padding:26px 22px;box-shadow:0 10px 34px rgba(158,31,58,.12)}
+.paper p{font-size:1.12rem;line-height:1.8;margin:1em 0}
+.paper b{color:var(--rouge)}
+.mid{text-align:center}
+.rose{font-size:4.5rem;display:block;text-align:center;filter:drop-shadow(0 4px 10px rgba(158,31,58,.3))}
+.rose.show{animation:bloom 2.4s ease-out both}
+@keyframes bloom{from{transform:scale(.3) rotate(-15deg);opacity:0}to{transform:none;opacity:1}}
+.glow{display:block;text-align:center;font-size:2.4rem;margin:.4em 0;filter:drop-shadow(0 0 10px rgba(227,176,75,.9))}
+.bisou{font-size:1.2rem}
+.avis{margin-top:2em;padding:16px;border-left:3px solid var(--or);background:rgba(246,211,216,.45);border-radius:0 12px 12px 0;font-size:.92rem;font-style:italic;line-height:1.6}
+.avis p{font-size:inherit;line-height:inherit;margin:.5em 0}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div id="fx" aria-hidden="true"></div>
+
+<!-- ACCUEIL -->
+<section class="screen" id="s1"><div class="box">
+  <div class="sky" aria-hidden="true"><div class="sun"></div><span class="heart">❤️</span></div>
+  <h1 class="r" id="h1">Bonjour, ma Princesse… ❤️</h1>
+  <p class="r" id="p1">Avant que ta journée commence vraiment, j'aimerais déposer un petit sourire dans ton cœur.</p>
+  <button class="btn r" id="open" type="button">Découvrir mon petit message 💌</button>
+</div></section>
+
+<!-- LETTRE -->
+<section class="screen letter" id="s2"><div class="box"><div class="paper" id="paper">
+  <p class="r"><b>Bonjour, ma Princesse. ❤️</b></p>
+  <p class="r">Si je pouvais choisir la première chose qui toucherait ton cœur ce matin, je choisirais un sourire. Pas n'importe lequel… celui qui apparaît doucement sur tes lèvres quand tu te sens aimée, appréciée et importante pour quelqu'un.</p>
+  <p class="r">J'aurais aimé pouvoir être près de toi, te regarder dans les yeux, te sourire et te souhaiter bonjour de vive voix. Peut-être même te taquiner un peu, juste pour voir ce joli sourire apparaître sur ton visage. Et ensuite, te dire tout simplement : tu es une personne précieuse pour moi.</p>
+  <p class="r">Je ne sais pas exactement comment sera ta journée. Je ne peux pas promettre qu'elle sera parfaite, que tout sera facile ou que rien ne viendra troubler ta tranquillité. Mais je peux sincèrement te souhaiter une journée douce, remplie de petites joies, de bonnes nouvelles et de raisons de sourire.</p>
+  <p class="r">J'espère que tu trouveras de la lumière même dans les moments chargés, du courage lorsque tu en auras besoin et un peu de paix lorsque le monde autour de toi ira trop vite.</p>
+  <p class="r">Et surtout, ma Princesse, n'oublie pas de penser aussi à toi. Tu mérites de la douceur, de l'attention, du respect et de belles choses. Tu n'as pas besoin de porter le monde sur tes épaules pour mériter qu'on prenne soin de toi.</p>
+  <p class="r">Tu sais, il y a des personnes qui rendent une journée plus belle simplement parce qu'elles existent. Et puis il y a toi, qui as réussi à donner à un simple bonjour une importance toute particulière. ❤️</p>
+  <p class="r">Alors, si aujourd'hui tu souris sans raison apparente, si tu regardes ton téléphone avec un petit sourire ou si tu te demandes qui a décidé de commencer la journée en pensant à toi… eh bien, je plaide coupable. 😂❤️</p>
+  <p class="r">Je voulais simplement que ton premier sourire de la journée ait une petite raison de naître.</p>
+  <p class="r">Prends soin de toi, ma Princesse. Avance à ton rythme, crois en toi et n'oublie jamais que tu mérites autant de bonheur que tu en souhaites aux autres.</p>
+  <p class="r"><b>Bonjour, mon amour. Que cette journée soit aussi belle que le sourire que j'espère voir apparaître sur ton visage en lisant ces quelques mots.</b></p>
+  <p class="r">Je t'envoie une immense tendresse, un baiser tout doux et un câlin virtuel suffisamment grand pour te faire oublier, pendant quelques secondes, tout ce qui pourrait te fatiguer.</p>
+  <p class="r">Et pour le câlin, aucune ordonnance n'est nécessaire. 😂❤️</p>
+
+  <span class="rose r" aria-hidden="true">🌹</span>
+  <p class="r mid">Une dernière petite chose, ma Princesse…</p>
+  <p class="r mid">Si je pouvais glisser quelque chose dans ta journée, ce serait un petit rappel : quelque part, une pensée tendre vient de se poser sur toi pour te souhaiter le meilleur.</p>
+  <p class="r mid">Alors souris un peu pour moi… et surtout, souris pour toi. ❤️</p>
+  <span class="glow r" aria-hidden="true">💖</span>
+  <p class="r mid bisou" data-rain="1"><b>Bonne journée, ma Princesse. Je t'envoie un bisou que même la distance ne peut arrêter. 💋</b></p>
+
+  <div class="avis r">
+    <p>Avis officiel : la destinataire de ce message est soupçonnée d'avoir volé quelques pensées, provoqué des sourires inexpliqués et occupé une place non autorisée dans un certain cœur.</p>
+    <p>La suspecte est priée de ne pas changer de comportement. Le propriétaire du cœur ne souhaite pas porter plainte. 😂❤️</p>
+  </div>
+  <div class="mid"><button class="btn soft r" id="again" type="button">Relire le message 🔁</button></div>
+</div></div></section>
+
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)};
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var fx=$("#fx"),s1=$("#s1"),s2=$("#s2"),timers=[],userScrolled=false;
+function later(f,ms){var t=setTimeout(f,ms);timers.push(t)}
+function clearAll(){timers.forEach(clearTimeout);timers=[]}
+function rnd(a,b){return a+Math.random()*(b-a)}
+
+/* Décor : étoiles et cœurs flottants lents */
+for(var i=0;i<(reduce?8:22);i++){
+  var st=document.createElement("div");st.className="star";
+  st.style.left=rnd(0,100)+"%";st.style.top=rnd(0,100)+"%";st.style.animationDelay=rnd(0,4)+"s";fx.appendChild(st);
+}
+function floater(){
+  if(reduce||document.hidden||fx.querySelectorAll(".fh").length>7)return;
+  var h=document.createElement("div");h.className="fh";
+  h.textContent=["❤️","💗","💕"][Math.floor(rnd(0,3))];
+  h.style.left=rnd(3,94)+"%";h.style.fontSize=rnd(14,26)+"px";
+  h.style.setProperty("--dx",rnd(-40,40)+"px");h.style.setProperty("--r",rnd(-25,25)+"deg");
+  h.style.animationDuration=rnd(11,17)+"s";fx.appendChild(h);
+  setTimeout(function(){h.remove()},17500);
+}
+setInterval(floater,2600);floater();
+
+/* Pluie de cœurs finale */
+function heartRain(){
+  var n=reduce?6:34;
+  for(var i=0;i<n;i++){(function(i){later(function(){
+    var h=document.createElement("span");h.className="rain";
+    h.textContent=["❤️","💖","💗","💕","🌹"][i%5];
+    h.style.left=rnd(2,94)+"%";h.style.fontSize=rnd(18,32)+"px";
+    h.style.setProperty("--dx",rnd(-40,40)+"px");h.style.setProperty("--r",rnd(-120,120)+"deg");
+    h.style.animationDuration=rnd(4,7)+"s";document.body.appendChild(h);
+    setTimeout(function(){h.remove()},7200);
+  },i*140)})(i)}
+}
+
+function show(el,ms){later(function(){el.classList.add("show")},reduce?0:ms)}
+
+/* Accueil : lever de soleil puis textes */
+function intro(){
+  clearAll();
+  ["#h1","#p1","#open"].forEach(function(s){$(s).classList.remove("show")});
+  $("#open").disabled=false;
+  s2.className="screen letter";s1.className="screen on";window.scrollTo(0,0);
+  show($("#h1"),2200);show($("#p1"),4600);show($("#open"),6800);
+}
+
+/* Lettre : apparition douce, phrase après phrase */
+function letter(){
+  clearAll();userScrolled=false;
+  var items=Array.prototype.slice.call(document.querySelectorAll("#paper .r"));
+  items.forEach(function(e){e.classList.remove("show")});
+  s1.className="screen out";
+  later(function(){
+    s1.className="screen";s2.className="screen letter on";window.scrollTo(0,0);
+    var t=900;
+    items.forEach(function(el){
+      var len=(el.textContent||"").length;
+      var pause=el.classList.contains("rose")?2200:(el.id==="again"?800:1700+len*22);
+      var at=t;
+      later(function(){
+        el.classList.add("show");
+        if(el.getAttribute("data-rain"))heartRain();
+        if(!userScrolled){try{el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})}catch(e){el.scrollIntoView()}}
+      },reduce?0:at);
+      t+=reduce?0:pause;
+    });
+  },reduce?0:900);
+}
+
+/* Si elle fait défiler elle-même, on arrête le défilement automatique */
+["touchstart","wheel","keydown"].forEach(function(ev){
+  window.addEventListener(ev,function(){userScrolled=true},{passive:true});
+});
+
+var opened=false;
+$("#open").addEventListener("click",function(){
+  if(opened)return;opened=true;this.disabled=true;letter();
+});
+$("#again").addEventListener("click",function(){
+  opened=false;clearAll();
+  document.querySelectorAll(".rain").forEach(function(e){e.remove()});
+  intro();
+});
+
+intro();
+})();
+</script>
+</body>
+</html>
